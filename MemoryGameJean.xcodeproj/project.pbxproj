@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F376F171B692AE400FCAC95 /* button1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F376F161B692AE400FCAC95 /* button1.png */; };
+		0F376F191B692B9900FCAC95 /* button2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F376F181B692B9900FCAC95 /* button2.png */; };
 		0FE5404A1B4FBF6800675C0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE540491B4FBF6800675C0B /* AppDelegate.swift */; };
 		0FE5404C1B4FBF6800675C0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5404B1B4FBF6800675C0B /* ViewController.swift */; };
 		0FE5404F1B4FBF6800675C0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5404D1B4FBF6800675C0B /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F376F161B692AE400FCAC95 /* button1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button1.png; sourceTree = "<group>"; };
+		0F376F181B692B9900FCAC95 /* button2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button2.png; sourceTree = "<group>"; };
 		0FE540441B4FBF6800675C0B /* MemoryGameJean.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemoryGameJean.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FE540481B4FBF6800675C0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0FE540491B4FBF6800675C0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 		0FE540461B4FBF6800675C0B /* MemoryGameJean */ = {
 			isa = PBXGroup;
 			children = (
+				0F376F181B692B9900FCAC95 /* button2.png */,
+				0F376F161B692AE400FCAC95 /* button1.png */,
 				0FE5406D1B4FC14E00675C0B /* pic01.png */,
 				0FE5406E1B4FC14E00675C0B /* pic02.png */,
 				0FE5406F1B4FC14E00675C0B /* pic03.png */,
@@ -275,6 +281,8 @@
 				0FE5408D1B4FC14E00675C0B /* pic13.png in Resources */,
 				0FE540921B4FC14E00675C0B /* pic18.png in Resources */,
 				0FE540901B4FC14E00675C0B /* pic16.png in Resources */,
+				0F376F191B692B9900FCAC95 /* button2.png in Resources */,
+				0F376F171B692AE400FCAC95 /* button1.png in Resources */,
 				0FE540831B4FC14E00675C0B /* pic03.png in Resources */,
 				0FE540931B4FC14E00675C0B /* rect-blue.png in Resources */,
 				0FE5408F1B4FC14E00675C0B /* pic15.png in Resources */,
@@ -497,6 +505,7 @@
 				0FE540651B4FBF6800675C0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0FE540661B4FBF6800675C0B /* Build configuration list for PBXNativeTarget "MemoryGameJeanTests" */ = {
 			isa = XCConfigurationList;
@@ -505,6 +514,7 @@
 				0FE540681B4FBF6800675C0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

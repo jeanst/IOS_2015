@@ -39,14 +39,13 @@ class ViewController2 : UIViewController{
     var textView: UITextView?;
     var button: UIButton!;
     var board: UIView!;
-    var board1: UIView!;
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        
+        /*
         
         button = UIButton.buttonWithType(UIButtonType.System) as? UIButton;
         //let hh = view.bounds.height - 30;
@@ -58,9 +57,13 @@ class ViewController2 : UIViewController{
         button.addTarget(self, action: "buttonIsPressed:", forControlEvents: UIControlEvents.TouchDown);
         button.backgroundColor = UIColor.yellowColor();
         view.addSubview(button);
+       */
+        //view.backgroundColor = UIColor.brownColor();
+        ncol = NCOL;
+        nrow = NROW;
         
-        view.backgroundColor = UIColor.brownColor();
-        
+        println(" IN VIEWDIDLOAD  NCOL \(NCOL)  NROW \(NROW)");
+        playGame();
         
     }
     func buttonIsPressed(sender: UIButton){
@@ -74,6 +77,8 @@ class ViewController2 : UIViewController{
         ncol = NCOL;
         nrow = NROW;
         
+        println(" IN PLAYGAME  NCOL \(NCOL)  NROW \(NROW)");
+        
         textView = UITextView(frame: CGRect(x: 60, y: 50, width: 250, height: 50));
         textView!.text = "Memory Game " + NCOL.description + "x" + NROW.description;
         textView!.textColor = UIColor.yellowColor();
@@ -81,20 +86,42 @@ class ViewController2 : UIViewController{
         textView?.backgroundColor = UIColor.brownColor();
         
         textView!.font = UIFont.systemFontOfSize(28);
-        view.addSubview(textView!);
+        //view.addSubview(textView!);
         
         Skey = "game" + ncol.description + nrow.description;
         
         Number = ncol * nrow;
-        if(Number < 20) {
+        
+        switch(Number){
+        case 12:
             Grade = 100;
-        }else if ( Number < 30){
-            Grade = 1000;
-        }else {
-            Grade = 5000;
+            break;
+        case 16:
+            Grade = 200;
+            break;
+        case 20:
+            Grade = 300;
+            break;
+        case 24:
+            Grade = 400;
+            break;
+        case 30:
+            Grade = 500;
+            break;
+        case 36:
+            Grade = 600;
+            break;
+        default:
+            Grade = 100;
         }
         
         userDefaults = NSUserDefaults.standardUserDefaults();
+        //userDefaults.setInteger(0, forKey: "game43");
+        //userDefaults.setInteger(0, forKey: "game44");
+        //userDefaults.setInteger(0, forKey: "game45");
+        //userDefaults.setInteger(0, forKey: "game46");
+        //userDefaults.setInteger(0, forKey: "game65");
+        //userDefaults.setInteger(0, forKey: "game66");
         resetCounters();
         println(" SKEY \(Skey)  POINTS \(maxPoints) Grade \(Grade)");
         
@@ -151,7 +178,7 @@ class ViewController2 : UIViewController{
         board.backgroundColor = UIColor.whiteColor();
         board.center = view.center;
         
-        view.backgroundColor = UIColor.brownColor();
+        view.backgroundColor = UIColor.whiteColor();
         
         view.addSubview(board);
         
@@ -213,13 +240,15 @@ class ViewController2 : UIViewController{
             let sec = (Int)(seconds);
             let pointD = (Double)(Number * Grade ) / (Double)(counter) * 100 / timeInterval;
             Points = (Int)(pointD);
-            if ( maxPoints == 0 || Points > maxPoints){
+            var verb:String = "is";
+            if ( Points > maxPoints){
                 userDefaults.setInteger(Points, forKey: Skey);
+                verb = "was";
             }
             
             println(" TIME  \(timeInterval)  \(min):\(sec)  POINTS: \(Points) MaxPOINTS \(maxPoints)");
-            let controller = UIAlertController(title: "End of the GAME\(ncol)x\(nrow)!!!", message: "Using: \(counter) clicks!!! \n Elapse time:  \(min):\(sec) \n You won \(Points) points \n Your best score is \(maxPoints)", preferredStyle: UIAlertControllerStyle.Alert);
-            let actionGO = UIAlertAction(title: "Play again the Game", style: UIAlertActionStyle.Default, handler: { [weak self] (action: UIAlertAction! ) -> Void in
+            let controller = UIAlertController(title: "End of the GAME\(ncol)x\(nrow)!!!", message: "Using: \(counter) clicks!!! \n Elapse time:  \(min):\(sec) \n You won \(Points) points \n Your best score \(verb) \(maxPoints)", preferredStyle: UIAlertControllerStyle.Alert);
+            let actionGO = UIAlertAction(title: "Play again the GAME\(ncol)x\(nrow)", style: UIAlertActionStyle.Default, handler: { [weak self] (action: UIAlertAction! ) -> Void in
                 
                 self!.shufflecards();
                 for cardImageView in self!.cardImageViews{
@@ -236,11 +265,7 @@ class ViewController2 : UIViewController{
                 //for cardImageView in self!.cardImageViews{
                 //    cardImageView.image = self!.imageFinish;
                 //}
-                
-                self!.board.removeFromSuperview();
-                self!.textView?.removeFromSuperview();
-                
-                self!.dismissViewControllerAnimated(false, completion: nil);
+                self!.skipControllers();
                 
                 });
             controller.addAction(actionNOGO)
@@ -249,7 +274,16 @@ class ViewController2 : UIViewController{
         }
         
     }
-    
+    func skipControllers(){
+        //self.board.removeFromSuperview();
+        //self.textView?.removeFromSuperview();
+        
+        //self!.dismissViewControllerAnimated(true, completion: nil);
+        let VC = ViewController();
+        VC.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext;
+        presentViewController(ViewController(), animated: true, completion:  nil);
+        
+    }
     
     func resetCounters(){
         counter = 0;
